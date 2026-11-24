@@ -81,62 +81,49 @@ jobs:
             ];
             models.forEach(m => fs.writeFileSync(\`public/assets/models/\${m}.glb\`, glb));
           "
-          # Create placeholder WAV files (silence)
-          node -e "
-            const fs = require('fs');
-            const wav = Buffer.alloc(44 + 88200); // 2 sec silence at 44.1kHz
-            wav.write('RIFF', 0); wav.writeUInt32LE(36 + 88200, 4); wav.write('WAVE', 8);
-            wav.write('fmt ', 12); wav.writeUInt32LE(16, 16); wav.writeUInt16LE(1, 20);
-            wav.writeUInt16LE(1, 22); wav.writeUInt32LE(44100, 24); wav.writeUInt32LE(88200, 28);
-            wav.writeUInt16LE(2, 32); wav.writeUInt16LE(16, 34); wav.write('data', 36);
-            wav.writeUInt32LE(88200, 40);
-            const sfx = [
-              'thunk_plastic_aluminum', 'hiss_he3_boiloff', 'generator_drone_distant',
-              'click_keypad', 'electrical_buzz_lna', 'wind_dish_surface',
-              'hydraulic_whine_azimuth', 'voice_crack_ping', 'metal_fatigue_groan',
-              'control_room_hum', 'coffee_sip', 'flatline_tone', 'burger_wrapper_crinkle',
-              'button_beep', 'led_pulse_sync', 'clock_tick_sidechain_start',
-              'solder_iron_hiss', 'tape_rip', 'keypad_tones_dtmf_echo',
-              'scope_beep', 'lock_tone_rising', 'prayer_bead_click',
-              'dish_motor_roar', 'transformer_hum_400kw', 'phone_battery_whine',
-              'timer_beep_beep_beep', 'inhale_sharp', 'heartbeat_thump',
-              'star_trail_whoosh', 'battery_tick_1pct_sec', 'hydraulic_drone',
-              'fabric_rustle', 'skin_contact_squelch', 'lcd_bias_whine',
-              'cup_slam', 'vein_pulse_throb', 'snr_meter_tick',
-              'bite_crunch', 'antenna_snap', 'dielectric_hum',
-              'crossover_whoosh', 'vargas_gasp', 'control_room_silence',
-              'frame_sync_beep', 'rs_decode_chirp', 'cosmic_distance_echo',
-              'aurora_crackle', 'body_thud', 'lcd_fade_black',
-              'slow_clap', 'charger_cable_whip', 'usb_negotiation_beep',
-              'cherry_picker_descent_whine', 'zip_lock_seal', 'label_gun_click',
-              'data_rate_counter_spin', 'record_groove_hiss', 'johnny_b_goode_fragment',
-              'tag_gun_pfft', 'cleanroom_airflow', 'twta_fan_hum',
-              'pen_scratch', 'paper_fiber', 'frame_corner_tap',
-              'duck_splash', 'quack_modulated', 'signal_bar_ping',
-              'micro_crack_snap', 'thermal_ping', 'engineer_sigh',
-              'pocket_slide', 'anvil_ring', 'new_phone_boot_chime',
-              'cryocooler_bang', 'kw400_silence', 'waterfall_collapse',
-              'hydraulic_rise', 'moonlight_shimmer', 'carrier_lock_tone',
-              'data_burst_chirp', 'headset_tap', 'patch_cord_click',
-              'smirk_breath', 'dtmf_tones', 'slew_roar', 'aurora_hiss',
-              'call_end_beep', 'battery_blink', 'signal_bar_solid',
-              'wing_beats', 'ripple_plop', 'binary_tone', 'click_click_keypad'
-            ];
-            sfx.forEach(s => fs.writeFileSync(\`public/assets/sfx/\${s}.wav\`, wav));
-          "
-          # Create placeholder MP3 files (silence)
-          node -e "
-            const fs = require('fs');
-            // Minimal MP3 frame (silence)
-            const mp3 = Buffer.from([
-              0xFF, 0xFB, 0x90, 0x44, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-              0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-              0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-            ]);
-            ['act1_ticking', 'act2_rising', 'act3_montage', 'act4_brass', 'loop_decay'].forEach(m =>
-              fs.writeFileSync(\`public/assets/music/\${m}.mp3\`, mp3)
-            );
-          "
+          # Create valid silence WAV files
+          sfx=(
+            'thunk_plastic_aluminum' 'hiss_he3_boiloff' 'generator_drone_distant'
+            'click_keypad' 'electrical_buzz_lna' 'wind_dish_surface'
+            'hydraulic_whine_azimuth' 'voice_crack_ping' 'metal_fatigue_groan'
+            'control_room_hum' 'coffee_sip' 'flatline_tone' 'burger_wrapper_crinkle'
+            'button_beep' 'led_pulse_sync' 'clock_tick_sidechain_start'
+            'solder_iron_hiss' 'tape_rip' 'keypad_tones_dtmf_echo'
+            'scope_beep' 'lock_tone_rising' 'prayer_bead_click'
+            'dish_motor_roar' 'transformer_hum_400kw' 'phone_battery_whine'
+            'timer_beep_beep_beep' 'inhale_sharp' 'heartbeat_thump'
+            'star_trail_whoosh' 'battery_tick_1pct_sec' 'hydraulic_drone'
+            'fabric_rustle' 'skin_contact_squelch' 'lcd_bias_whine'
+            'cup_slam' 'vein_pulse_throb' 'snr_meter_tick'
+            'bite_crunch' 'antenna_snap' 'dielectric_hum'
+            'crossover_whoosh' 'vargas_gasp' 'control_room_silence'
+            'frame_sync_beep' 'rs_decode_chirp' 'cosmic_distance_echo'
+            'aurora_crackle' 'body_thud' 'lcd_fade_black'
+            'slow_clap' 'charger_cable_whip' 'usb_negotiation_beep'
+            'cherry_picker_descent_whine' 'zip_lock_seal' 'label_gun_click'
+            'data_rate_counter_spin' 'record_groove_hiss' 'johnny_b_goode_fragment'
+            'tag_gun_pfft' 'cleanroom_airflow' 'twta_fan_hum'
+            'pen_scratch' 'paper_fiber' 'frame_corner_tap'
+            'duck_splash' 'quack_modulated' 'signal_bar_ping'
+            'micro_crack_snap' 'thermal_ping' 'engineer_sigh'
+            'pocket_slide' 'anvil_ring' 'new_phone_boot_chime'
+            'cryocooler_bang' 'kw400_silence' 'waterfall_collapse'
+            'hydraulic_rise' 'moonlight_shimmer' 'carrier_lock_tone'
+            'data_burst_chirp' 'headset_tap' 'patch_cord_click'
+            'smirk_breath' 'dtmf_tones' 'slew_roar' 'aurora_hiss'
+            'call_end_beep' 'battery_blink' 'signal_bar_solid'
+            'wing_beats' 'ripple_plop' 'binary_tone' 'click_click_keypad'
+          )
+          for s in \"${sfx[@]}\"; do
+            ffmpeg -f lavfi -i anullsrc=r=44100:cl=mono -t 2 -q:a 0 \"public/assets/sfx/$s.wav\"
+          done
+          # Create valid silence MP3 files
+          music=(
+            'act1_ticking' 'act2_rising' 'act3_montage' 'act4_brass' 'loop_decay'
+          )
+          for m in \"${music[@]}\"; do
+            ffmpeg -f lavfi -i anullsrc=r=44100:cl=mono -t 5 -q:a 2 \"public/assets/music/$m.mp3\"
+          done
 
       - name: Render video
         run: |
