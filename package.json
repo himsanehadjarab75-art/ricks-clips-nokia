@@ -1,0 +1,29 @@
+{
+  "name": "ricks-clips-nokia",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "remotion bundle",
+    "render": "remotion render src/Root.tsx Main out/video.mp4 --concurrency=4",
+    "render:preview": "remotion render src/Root.tsx Main out/preview.mp4 --concurrency=2 --image-format=jpeg --jpeg-quality=80",
+    "studio": "remotion studio",
+    "lint": "eslint src --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "remotion": "^4.0.0",
+    "three": "^0.160.0",
+    "@react-three/fiber": "^8.15.0",
+    "@react-three/drei": "^9.90.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config": "^4.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/three": "^0.160.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.0"
+  }
+}
