@@ -10,21 +10,21 @@
     "lint": "eslint src --ext .ts,.tsx"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "remotion": "^4.0.0",
-    "three": "^0.160.0",
-    "@react-three/fiber": "^8.15.0",
-    "@react-three/drei": "^9.90.0",
-    "zod": "^3.22.0"
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.547",
+    "three": "0.160.1",
+    "@react-three/fiber": "8.18.0",
+    "@react-three/drei": "9.122.0",
+    "zod": "4.6.7"
   },
   "devDependencies": {
-    "@remotion/cli": "^4.0.0",
-    "@remotion/eslint-config": "^4.0.0",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
-    "@types/three": "^0.160.0",
-    "eslint": "^8.56.0",
-    "typescript": "^5.3.0"
+    "@remotion/cli": "4.0.547",
+    "@remotion/eslint-config": "4.0.547",
+    "@types/react": "18.3.31",
+    "@types/react-dom": "18.3.7",
+    "@types/three": "0.160.0",
+    "eslint": "8.57.1",
+    "typescript": "5.9.3"
   }
 }
