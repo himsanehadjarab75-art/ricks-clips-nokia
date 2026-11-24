@@ -118,14 +118,14 @@ jobs:
             'wing_beats' 'ripple_plop' 'binary_tone' 'click_click_keypad'
           )
           for s in \"${sfx[@]}\"; do
-            ffmpeg -f lavfi -i anullsrc=r=44100:cl=mono -t 2 -q:a 0 \"public/assets/sfx/$s.wav\"
+            ffmpeg -y -f lavfi -i anullsrc=r=44100:cl=mono -t 2 -q:a 0 \"public/assets/sfx/$s.wav\"
           done
           # Create valid silence MP3 files
           music=(
             'act1_ticking' 'act2_rising' 'act3_montage' 'act4_brass' 'loop_decay'
           )
           for m in \"${music[@]}\"; do
-            ffmpeg -f lavfi -i anullsrc=r=44100:cl=mono -t 5 -q:a 2 \"public/assets/music/$m.mp3\"
+            ffmpeg -y -f lavfi -i anullsrc=r=44100:cl=mono -t 5 -q:a 2 \"public/assets/music/$m.mp3\"
           done
 
       - name: Render video
