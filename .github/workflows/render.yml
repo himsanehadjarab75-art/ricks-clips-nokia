@@ -42,7 +42,7 @@ jobs:
       - name: Create placeholder assets
         run: |
           mkdir -p public/assets/models public/assets/sfx public/assets/music
-          # Create minimal placeholder GLB files (1x1x1 cubes)
+          node scripts/generate-assets.js
           node -e "
             const fs = require('fs');
             const glb = Buffer.from([
