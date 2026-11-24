@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "build": "remotion bundle",
-    "render": "remotion render src/Root.tsx Main out/video.mp4 --concurrency=4",
-    "render:preview": "remotion render src/Root.tsx Main out/preview.mp4 --concurrency=2 --image-format=jpeg --jpeg-quality=80",
+    "render": "npx remotion render src/Root.tsx Main out/video.mp4 --concurrency=4",
+    "render:preview": "npx remotion render src/Root.tsx Main out/preview.mp4 --concurrency=2 --image-format=jpeg --jpeg-quality=80",
     "studio": "remotion studio",
     "lint": "eslint src --ext .ts,.tsx"
   },
