@@ -4,8 +4,8 @@ import * as THREE from "three";
 import { useRef } from "react";
 
 export const Shot8_Goldstone: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: goldstone } = useGLTF("/assets/models/goldstone_dish.glb");
-  const { scene: vargas } = useGLTF("/assets/models/vargas_rig.glb");
+  const { scene: goldstone } = useGLTF("/public/assets/models/goldstone_dish.glb");
+  const { scene: vargas } = useGLTF("/public/assets/models/vargas_rig.glb");
 
   useFrame(() => {
     if (goldstone) {

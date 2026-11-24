@@ -5,7 +5,7 @@ import { group } from "@react-three/drei";
 import * as THREE from "three";
 
 export const Shot23_MicroFissure: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: coupler } = useGLTF("/assets/models/audio_coupler.glb");
+  const { scene: coupler } = useGLTF("/public/assets/models/audio_coupler.glb");
 
   const fissureRef = useRef<THREE.Mesh>(null);
 

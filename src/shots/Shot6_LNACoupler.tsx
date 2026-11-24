@@ -5,7 +5,7 @@ import { group } from "@react-three/drei";
 import * as THREE from "three";
 
 export const Shot6_LNACoupler: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: nokia } = useGLTF("/assets/models/nokia_3310.glb");
+  const { scene: nokia } = useGLTF("/public/assets/models/nokia_3310.glb");
 
   const couplerRef = useRef<THREE.Mesh>(null);
   const solderRefs = useRef<THREE.Mesh[]>([]);

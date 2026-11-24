@@ -11,8 +11,8 @@ const barStyles = `
 `;
 
 export const Shot22_Mallard: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: mallard } = useGLTF("/assets/models/mallard.glb");
-  const { scene: nokia } = useGLTF("/assets/models/nokia_3310.glb");
+  const { scene: mallard } = useGLTF("/public/assets/models/mallard.glb");
+  const { scene: nokia } = useGLTF("/public/assets/models/nokia_3310.glb");
 
   useFrame(() => {
     if (mallard) {

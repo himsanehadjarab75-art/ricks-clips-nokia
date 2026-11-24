@@ -4,8 +4,8 @@ import * as THREE from "three";
 import { useRef } from "react";
 
 export const Shot24_PocketAnvil: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: nokiaNew } = useGLTF("/assets/models/nokia_3310_2017.glb");
-  const { scene: nokiaOld } = useGLTF("/assets/models/nokia_3310.glb");
+  const { scene: nokiaNew } = useGLTF("/public/assets/models/nokia_3310_2017.glb");
+  const { scene: nokiaOld } = useGLTF("/public/assets/models/nokia_3310.glb");
 
   useFrame(() => {
     // New phone slides into pocket

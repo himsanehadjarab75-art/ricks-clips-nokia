@@ -5,8 +5,8 @@ import { group } from "@react-three/drei";
 import * as THREE from "three";
 
 export const Shot11_Armpit: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: nokia } = useGLTF("/assets/models/nokia_3310.glb");
-  const { scene: jacket } = useGLTF("/assets/models/coder_jacket.glb");
+  const { scene: nokia } = useGLTF("/public/assets/models/nokia_3310.glb");
+  const { scene: jacket } = useGLTF("/public/assets/models/coder_jacket.glb");
 
   const screenRef = useRef<THREE.Mesh>(null);
 

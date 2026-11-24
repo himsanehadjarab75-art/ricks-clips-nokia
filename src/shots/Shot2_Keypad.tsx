@@ -5,8 +5,8 @@ import * as THREE from "three";
 import { useRef } from "react";
 
 export const Shot2_Keypad: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: nokia } = useGLTF("/assets/models/nokia_3310.glb");
-  const { scene: dishMesh } = useGLTF("/assets/models/dish_mesh_closeup.glb");
+  const { scene: nokia } = useGLTF("/public/assets/models/nokia_3310.glb");
+  const { scene: dishMesh } = useGLTF("/public/assets/models/dish_mesh_closeup.glb");
 
   const screenRef = useRef<THREE.Mesh>(null);
 

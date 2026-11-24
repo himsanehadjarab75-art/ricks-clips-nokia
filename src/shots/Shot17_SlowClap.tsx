@@ -5,7 +5,7 @@ import { group } from "@react-three/drei";
 import * as THREE from "three";
 
 export const Shot17_SlowClap: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: vargas } = useGLTF("/assets/models/vargas_rig.glb");
+  const { scene: vargas } = useGLTF("/public/assets/models/vargas_rig.glb");
 
   const handRef = useRef<THREE.Mesh>(null);
   const chargerRef = useRef<THREE.Mesh>(null);

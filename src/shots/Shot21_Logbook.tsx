@@ -5,7 +5,7 @@ import { group } from "@react-three/drei";
 import * as THREE from "three";
 
 export const Shot21_Logbook: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: vargas } = useGLTF("/assets/models/vargas_rig.glb");
+  const { scene: vargas } = useGLTF("/public/assets/models/vargas_rig.glb");
 
   const penRef = useRef<THREE.Mesh>(null);
 

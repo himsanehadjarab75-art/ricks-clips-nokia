@@ -4,9 +4,9 @@ import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
 export const Shot1_FeedHorn: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: dish } = useGLTF("/assets/models/dish_feed_horn.glb");
-  const { scene: nokia } = useGLTF("/assets/models/nokia_3310.glb");
-  const { scene: hand } = useGLTF("/assets/models/gloved_hand.glb");
+  const { scene: dish } = useGLTF("/public/assets/models/dish_feed_horn.glb");
+  const { scene: nokia } = useGLTF("/public/assets/models/nokia_3310.glb");
+  const { scene: hand } = useGLTF("/public/assets/models/gloved_hand.glb");
 
   const groupRef = useRef<THREE.Group>(null);
 

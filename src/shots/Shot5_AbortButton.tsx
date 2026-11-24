@@ -5,7 +5,7 @@ import { group } from "@react-three/drei";
 import * as THREE from "three";
 
 export const Shot5_AbortButton: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: vargas } = useGLTF("/assets/models/vargas_face.glb");
+  const { scene: vargas } = useGLTF("/public/assets/models/vargas_face.glb");
 
   const buttonRef = useRef<THREE.Mesh>(null);
   const glassesRef = useRef<THREE.Mesh>(null);

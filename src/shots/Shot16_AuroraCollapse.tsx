@@ -5,9 +5,9 @@ import { group } from "@react-three/drei";
 import * as THREE from "three";
 
 export const Shot16_AuroraCollapse: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: dish } = useGLTF("/assets/models/dish_full.glb");
-  const { scene: picker } = useGLTF("/assets/models/cherry_picker.glb");
-  const { scene: coder } = useGLTF("/assets/models/coder_rig.glb");
+  const { scene: dish } = useGLTF("/public/assets/models/dish_full.glb");
+  const { scene: picker } = useGLTF("/public/assets/models/cherry_picker.glb");
+  const { scene: coder } = useGLTF("/public/assets/models/coder_rig.glb");
 
   useFrame((state) => {
     // Aurora shader on sky

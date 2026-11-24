@@ -5,7 +5,7 @@ import { group } from "@react-three/drei";
 import * as THREE from "three";
 
 export const Shot9_Timer: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: nokia } = useGLTF("/assets/models/nokia_3310.glb");
+  const { scene: nokia } = useGLTF("/public/assets/models/nokia_3310.glb");
 
   const thumbRef = useRef<THREE.Mesh>(null);
 

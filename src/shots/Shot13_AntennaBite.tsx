@@ -5,7 +5,7 @@ import { group } from "@react-three/drei";
 import * as THREE from "three";
 
 export const Shot13_AntennaBite: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: nokia } = useGLTF("/assets/models/nokia_3310.glb");
+  const { scene: nokia } = useGLTF("/public/assets/models/nokia_3310.glb");
 
   const antennaRef = useRef<THREE.Mesh>(null);
   const teethRef = useRef<THREE.Mesh>(null);

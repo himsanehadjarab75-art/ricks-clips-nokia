@@ -5,7 +5,7 @@ import { group } from "@react-three/drei";
 import * as THREE from "three";
 
 export const Shot20_Cleanroom: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: nokia } = useGLTF("/assets/models/nokia_3310.glb");
+  const { scene: nokia } = useGLTF("/public/assets/models/nokia_3310.glb");
 
   const tagRef = useRef<THREE.Mesh>(null);
 

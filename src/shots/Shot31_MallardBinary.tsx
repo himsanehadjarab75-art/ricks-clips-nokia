@@ -4,9 +4,9 @@ import * as THREE from "three";
 import { useRef } from "react";
 
 export const Shot31_MallardBinary: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: campus } = useGLTF("/assets/models/jpl_campus.glb");
-  const { scene: mallard } = useGLTF("/assets/models/mallard.glb");
-  const { scene: nokia } = useGLTF("/assets/models/nokia_3310.glb");
+  const { scene: campus } = useGLTF("/public/assets/models/jpl_campus.glb");
+  const { scene: mallard } = useGLTF("/public/assets/models/mallard.glb");
+  const { scene: nokia } = useGLTF("/public/assets/models/nokia_3310.glb");
 
   useFrame(() => {
     if (mallard) {
