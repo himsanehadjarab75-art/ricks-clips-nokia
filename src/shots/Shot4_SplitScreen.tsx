@@ -1,5 +1,9 @@
 import { Html } from "@react-three/drei";
 
+const styles = `
+  @keyframes flatline { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0.3; } }
+`;
+
 export const Shot4_SplitScreen: React.FC<{ progress: number }> = ({ progress }) => {
   return (
     <Html fullscreen>
@@ -29,9 +33,6 @@ export const Shot4_SplitScreen: React.FC<{ progress: number }> = ({ progress }) 
             <div style={{ fontSize: "48px", color: "#FF0000", fontWeight: "bold", fontFamily: "monospace" }}>
               DOWNLINK SNR: <span style={{ animation: "flatline 0.5s infinite" }}>−∞ dB</span>
             </div>
-            <style jsx>{`
-              @keyframes flatline { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0.3; } }
-            `}</style>
           </div>
           <div style={{ position: "absolute", bottom: "10%", left: "10%", color: "#888", fontFamily: "monospace", fontSize: "18px" }}>
             GOLDSTONE  MADRID  CANBERRA  —  ALL LINKS DOWN
@@ -62,6 +63,7 @@ export const Shot4_SplitScreen: React.FC<{ progress: number }> = ({ progress }) 
             BURGER WRAPPER CRINKLE • COLD • 3AM
           </div>
         </div>
+        <style dangerouslySetInnerHTML={{ __html: styles }} />
       </div>
     </Html>
   );

@@ -1,6 +1,7 @@
 import { useFrame } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, group } from "@react-three/drei";
 import * as THREE from "three";
+import { useRef } from "react";
 
 export const Shot24_PocketAnvil: React.FC<{ progress: number }> = ({ progress }) => {
   const { scene: nokiaNew } = useGLTF("/assets/models/nokia_3310_2017.glb");

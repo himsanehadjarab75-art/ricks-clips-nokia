@@ -1,6 +1,7 @@
 import { useFrame } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, group } from "@react-three/drei";
 import * as THREE from "three";
+import { useRef } from "react";
 
 export const Shot31_MallardBinary: React.FC<{ progress: number }> = ({ progress }) => {
   const { scene: campus } = useGLTF("/assets/models/jpl_campus.glb");

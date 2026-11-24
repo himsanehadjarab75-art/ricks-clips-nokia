@@ -1,6 +1,7 @@
 import { useFrame } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, group } from "@react-three/drei";
 import * as THREE from "three";
+import { useRef } from "react";
 
 export const Shot8_Goldstone: React.FC<{ progress: number }> = ({ progress }) => {
   const { scene: goldstone } = useGLTF("/assets/models/goldstone_dish.glb");

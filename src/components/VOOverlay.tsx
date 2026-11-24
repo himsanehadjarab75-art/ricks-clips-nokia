@@ -40,11 +40,21 @@ export const VOOverlay: React.FC<VOOverlayProps> = ({ shot, progress }) => {
       }}
     >
       {displayText}
-      {voProgress < 1 && <span className="cursor" style={{ animation: "blink 0.8s infinite" }}>▌</span>}
-      <style jsx>{`
+      <style>{`
         @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
-        .cursor { margin-left: 2px; color: #FFD700; text-shadow: 0 0 8px #FFD700; }
       `}</style>
+      {voProgress < 1 && (
+        <span
+          style={{
+            marginLeft: 2,
+            color: "#FFD700",
+            textShadow: "0 0 8px #FFD700",
+            animation: "blink 0.8s infinite",
+          }}
+        >
+          ▌
+        </span>
+      )}
     </div>
   );
 };

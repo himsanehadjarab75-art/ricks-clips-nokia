@@ -1,6 +1,7 @@
 import { useFrame } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, group } from "@react-three/drei";
 import * as THREE from "three";
+import { useRef } from "react";
 
 export const Shot26_ReturnToFeed: React.FC<{ progress: number }> = ({ progress }) => {
   const { scene: dish } = useGLTF("/assets/models/dish_full.glb");

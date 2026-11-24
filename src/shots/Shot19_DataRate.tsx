@@ -1,5 +1,9 @@
 import { Html } from "@react-three/drei";
 
+const spinStyles = `
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+`;
+
 export const Shot19_DataRate: React.FC<{ progress: number }> = ({ progress }) => {
   const rate = Math.floor(160 + progress * 1240); // 160 to 1400 bps
 
@@ -27,8 +31,8 @@ export const Shot19_DataRate: React.FC<{ progress: number }> = ({ progress }) =>
         <svg width="200" height="200" style={{ marginTop: "40px", animation: "spin 2s linear infinite" }}>
           <circle cx="100" cy="100" r="90" fill="none" stroke="#FFD700" strokeWidth="4" strokeDasharray="20 10" />
           <circle cx="100" cy="100" r="60" fill="none" stroke="#00FFFF" strokeWidth="2" strokeDasharray="10 20" />
-          <style jsx>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
         </svg>
+        <style dangerouslySetInnerHTML={{ __html: spinStyles }} />
       </div>
     </Html>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "remotion";
+import { useEffect, useRef } from "react";
 import { Shot } from "../data/shots";
 
 interface SFXProviderProps {

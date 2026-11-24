@@ -1,5 +1,7 @@
+import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
+import { group } from "@react-three/drei";
 import * as THREE from "three";
 
 export const Shot5_AbortButton: React.FC<{ progress: number }> = ({ progress }) => {

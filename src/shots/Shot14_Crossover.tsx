@@ -1,7 +1,10 @@
 import { Html } from "@react-three/drei";
 
+const flashStyles = `
+  @keyframes flash { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+`;
+
 export const Shot14_Crossover: React.FC<{ progress: number }> = ({ progress }) => {
-  const crossoverFrame = Math.floor(progress * 120);
   const crossed = progress > 0.5;
 
   return (
@@ -44,9 +47,9 @@ export const Shot14_Crossover: React.FC<{ progress: number }> = ({ progress }) =
             }}
           >
             CROSSOVER
-            <style jsx>{`@keyframes flash { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }`}</style>
           </div>
         )}
+        <style dangerouslySetInnerHTML={{ __html: flashStyles }} />
       </div>
     </Html>
   );

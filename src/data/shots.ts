@@ -9,7 +9,7 @@ export const ShotSchema = z.object({
   type: z.enum(["threejs", "html", "hybrid"]),
   description: z.string(),
   vo: z.string(),
-  sfx: string[],
+  sfx: z.array(z.string()),
   camera: z.object({
     position: z.tuple([z.number(), z.number(), z.number()]),
     target: z.tuple([z.number(), z.number(), z.number()]),

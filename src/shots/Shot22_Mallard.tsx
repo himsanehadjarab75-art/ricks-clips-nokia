@@ -1,6 +1,14 @@
 import { useFrame } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, group } from "@react-three/drei";
 import * as THREE from "three";
+
+const barStyles = `
+  @keyframes bar1 { from { transform: scaleY(0); opacity: 0; } to { transform: scaleY(1); opacity: 1; } }
+  @keyframes bar2 { from { transform: scaleY(0); opacity: 0; } to { transform: scaleY(1); opacity: 1; } }
+  @keyframes bar3 { from { transform: scaleY(0); opacity: 0; } to { transform: scaleY(1); opacity: 1; } }
+  @keyframes bar4 { from { transform: scaleY(0); opacity: 0; } to { transform: scaleY(1); opacity: 1; } }
+  @keyframes bar5 { from { transform: scaleY(0); opacity: 0; } to { transform: scaleY(1); opacity: 1; } }
+`;
 
 export const Shot22_Mallard: React.FC<{ progress: number }> = ({ progress }) => {
   const { scene: mallard } = useGLTF("/assets/models/mallard.glb");
@@ -42,17 +50,11 @@ export const Shot22_Mallard: React.FC<{ progress: number }> = ({ progress }) => 
                 animation: `bar${i} 0.5s ${i * 0.1}s ease-out forwards`,
                 opacity: 0,
               }}
-            >
-              <style jsx>{`
-                @keyframes bar${i} {
-                  from { transform: scaleY(0); opacity: 0; }
-                  to { transform: scaleY(1); opacity: 1; }
-                }
-              `}</style>
-            </div>
+            />
           ))}
         </div>
       </Html>
+      <style dangerouslySetInnerHTML={{ __html: barStyles }} />
     </group>
   );
 };

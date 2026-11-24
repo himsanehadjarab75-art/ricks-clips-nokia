@@ -1,6 +1,8 @@
 import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
+import { group } from "@react-three/drei";
 import * as THREE from "three";
+import { useRef } from "react";
 
 export const Shot2_Keypad: React.FC<{ progress: number }> = ({ progress }) => {
   const { scene: nokia } = useGLTF("/assets/models/nokia_3310.glb");

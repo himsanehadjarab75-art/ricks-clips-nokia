@@ -1,7 +1,13 @@
 import { Html } from "@react-three/drei";
+import { useRef } from "react";
+
+const lockStyles = `
+  @keyframes lock { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0.3; } }
+`;
 
 export const Shot7_Oscilloscope: React.FC<{ progress: number }> = ({ progress }) => {
-  const frames = Math.floor(progress * 180);
+  const lockRef = useRef<number>(0);
+  const framesRef = useRef<number>(0);
 
   return (
     <Html fullscreen>
@@ -58,11 +64,11 @@ export const Shot7_Oscilloscope: React.FC<{ progress: number }> = ({ progress })
         </div>
         <div style={{ position: "absolute", top: "5%", right: "5%", color: "#FFD700", fontSize: "20px", textAlign: "right" }}>
           LOCK: <span style={{ animation: "lock 1s infinite" }}>{progress > 0.6 ? "ACQUIRED" : "SEARCHING"}</span>
-          <style jsx>{`@keyframes lock { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0.3; } }`}</style>
         </div>
         <div style={{ position: "absolute", bottom: "5%", left: "5%", color: "#FF4500", fontSize: "18px" }}>
           MATH WORKS. PHYSICS? PRAYING.
         </div>
+        <style dangerouslySetInnerHTML={{ __html: lockStyles }} />
       </div>
     </Html>
   );

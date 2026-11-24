@@ -1,6 +1,6 @@
-import { Composition, useCurrentFrame, useVideoConfig, interpolate, spring } from "remotion";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Html, useAnimations } from "@react-three/drei";
+import { Composition, registerRoot, useCurrentFrame, useVideoConfig } from "remotion";
+import { Canvas } from "@react-three/fiber";
+import { Html } from "@react-three/drei";
 import { shots, Shot } from "./data/shots";
 import { Shot1_FeedHorn } from "./shots/Shot1_FeedHorn";
 import { Shot2_Keypad } from "./shots/Shot2_Keypad";
@@ -73,7 +73,7 @@ const ShotComponents: Record<number, React.FC<{ progress: number }>> = {
   32: Shot32_LoopHook,
 };
 
-export const Main: React.FC = () => {
+const Main: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
 
@@ -105,18 +105,14 @@ export const Main: React.FC = () => {
   );
 };
 
-export const Root: React.FC = () => {
-  return (
-    <>
-      <Composition
-        id="Main"
-        component={Main}
-        width={1080}
-        height={1920}
-        fps={60}
-        durationInFrames={3600}
-        defaultProps={{}}
-      />
-    </>
-  );
-};
+registerRoot(() => (
+  <Composition
+    id="Main"
+    component={Main}
+    width={1080}
+    height={1920}
+    fps={60}
+    durationInFrames={3600}
+    defaultProps={{}}
+  />
+));

@@ -1,5 +1,9 @@
 import { Html } from "@react-three/drei";
 
+const typeStyles = `
+  @keyframes type { from { opacity: 0; } to { opacity: 1; } }
+`;
+
 const frames = [
   "FDS ACK       [OK]",
   "CMM READY     [OK]",
@@ -39,12 +43,12 @@ export const Shot15_Telemetry: React.FC<{ progress: number }> = ({ progress }) =
             }}
           >
             {frame}
-            <style jsx>{`@keyframes type { from { opacity: 0; } to { opacity: 1; } }`}</style>
           </div>
         ))}
         <div style={{ marginTop: "40px", color: "#FFD700", fontSize: "28px" }}>
           VOYAGER ANSWERED. 14 BILLION MILES.
         </div>
+        <style dangerouslySetInnerHTML={{ __html: typeStyles }} />
       </div>
     </Html>
   );
