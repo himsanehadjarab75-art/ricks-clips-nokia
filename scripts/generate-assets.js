@@ -78,6 +78,11 @@ const sfx = [
   "wing_beats", "ripple_plop", "binary_tone", "click_click_keypad"
 ];
 
+// Music files - generate valid MP3 files
+const music = [
+  "act1_ticking", "act2_rising", "act3_montage", "act4_brass", "loop_decay"
+];
+
 sfx.forEach(name => {
   execSync(
     `ffmpeg -y -f lavfi -i anullsrc=r=44100:cl=mono -t 2 -q:a 0 "public/assets/sfx/${name}.wav"`,
