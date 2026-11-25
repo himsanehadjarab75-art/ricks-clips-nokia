@@ -68,8 +68,8 @@ export const Shot7_Oscilloscope: React.FC<{ progress: number }> = ({ progress })
         <div style={{ position: "absolute", bottom: "5%", left: "5%", color: "#FF4500", fontSize: "18px" }}>
           MATH WORKS. PHYSICS? PRAYING.
         </div>
-        <style dangerouslySetInnerHTML={{ __html: lockStyles }} />
       </div>
+      <style dangerouslySetInnerHTML={{ __html: lockStyles }} />
     </Html>
   );
 };
