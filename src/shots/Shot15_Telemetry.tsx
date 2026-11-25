@@ -1,8 +1,5 @@
-import { Html } from "@react-three/drei";
-
-const typeStyles = `
-  @keyframes type { from { opacity: 0; } to { opacity: 1; } }
-`;
+import { useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 
 const frames = [
   "FDS ACK       [OK]",
@@ -17,39 +14,26 @@ export const Shot15_Telemetry: React.FC<{ progress: number }> = ({ progress }) =
   const visibleFrames = Math.floor(progress * frames.length);
 
   return (
-    <Html fullscreen>
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          background: "#000",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          fontFamily: "'Share Tech Mono', monospace",
-          fontSize: "36px",
-          lineHeight: 2,
-          color: "#00FF00",
-          textShadow: "0 0 8px #00FF00",
-        }}
-      >
-        {frames.slice(0, visibleFrames).map((frame, i) => (
-          <div
-            key={i}
-            style={{
-              opacity: i < visibleFrames - 1 ? 1 : progress * frames.length - visibleFrames + 1,
-              animation: i === visibleFrames - 1 ? "type 0.1s steps(20)" : "none",
-            }}
-          >
-            {frame}
-          </div>
-        ))}
-        <div style={{ marginTop: "40px", color: "#FFD700", fontSize: "28px" }}>
-          VOYAGER ANSWERED. 14 BILLION MILES.
-        </div>
-        <style dangerouslySetInnerHTML={{ __html: typeStyles }} />
-      </div>
-    </Html>
+    <group>
+      {frames.slice(0, visibleFrames).map((frame, i) => (
+        <mesh
+          key={i}
+          position={[0, i * 0.12 - 0.3, 0]}
+        >
+          <boxGeometry args={[0.6, 0.08, 0.02]} />
+          <meshStandardMaterial
+            color="#00FF00"
+            emissive="#00FF00"
+            emissiveIntensity={i < visibleFrames - 1 ? 0.5 : 1}
+            transparent
+            opacity={1}
+          />
+        </mesh>
+      ))}
+      <mesh position={[0, -0.8, 0]}>
+        <boxGeometry args={[0.8, 0.1, 0.02]} />
+        <meshStandardMaterial color="#FFD700" metalness={0.5} roughness={0.5} />
+      </mesh>
+    </group>
   );
 };

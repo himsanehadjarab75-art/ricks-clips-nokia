@@ -1,35 +1,30 @@
-import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
-import { group } from "@react-three/drei";
 import * as THREE from "three";
 
 export const Shot10_DronePullback: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: dish } = useGLTF("/public/assets/models/dish_full.glb");
-  const { scene: picker } = useGLTF("/public/assets/models/cherry_picker.glb");
-  const { scene: coder } = useGLTF("/public/assets/models/coder_rig.glb");
+  const dishRef = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
-    // Drone camera pull back
-    state.camera.position.lerp(
-      new THREE.Vector3(-15 * progress, 20 * progress, 30 * progress),
-      0.1
-    );
+    state.camera.position.lerp(new THREE.Vector3(-15 * progress, 20 * progress, 30 * progress), 0.1);
     state.camera.lookAt(0, 2, 0);
 
-    // Dish tracking
-    dish.rotation.y = progress * 0.02;
-
-    // Star trails
-    // (handled by starfield shader)
+    if (dishRef.current) dishRef.current.rotation.y = progress * 0.02;
   });
 
   return (
     <group>
-      <primitive object={dish} scale={1} position={[0, 0, 0]} />
-      <primitive object={picker} scale={1} position={[-5, 0, 12]} />
-      <primitive object={coder} scale={0.8} position={[-5, 8, 12]} />
-      {/* Starfield handled by background shader */}
+      <mesh ref={dishRef} position={[0, 0, 0]}>
+        <boxGeometry args={[2, 0.5, 2]} />
+        <meshStandardMaterial color="#222222" metalness={0.7} roughness={0.5} />
+      </mesh>
+      <mesh position={[-5, 0, 12]}>
+        <boxGeometry args={[0.5, 0.3, 1]} />
+        <meshStandardMaterial color="#333333" metalness={0.5} roughness={0.6} />
+      </mesh>
+      <mesh position={[-5, 8, 12]}>
+        <boxGeometry args={[0.4, 0.6, 0.2]} />
+        <meshStandardMaterial color="#8B4513" roughness={0.9} metalness={0.1} />
+      </mesh>
     </group>
   );
 };

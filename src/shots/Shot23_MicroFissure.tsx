@@ -1,26 +1,23 @@
-import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
-import { group } from "@react-three/drei";
 import * as THREE from "three";
 
 export const Shot23_MicroFissure: React.FC<{ progress: number }> = ({ progress }) => {
-  const { scene: coupler } = useGLTF("/public/assets/models/audio_coupler.glb");
-
   const fissureRef = useRef<THREE.Mesh>(null);
 
   useFrame(() => {
     if (!fissureRef.current) return;
 
-    // Fissure opening
     fissureRef.current.scale.x = THREE.MathUtils.lerp(0, 1, progress);
     fissureRef.current.material.emissiveIntensity = Math.sin(progress * Math.PI * 10) * 0.5 + 0.5;
   });
 
   return (
     <group>
-      <primitive object={coupler} scale={0.5} position={[0, 0, 0]} />
-      <mesh ref={fissureRef} name="micro_fissure" position={[0, 0, 0]}>
+      <mesh position={[0, 0, 0]}>
+        <boxGeometry args={[0.5, 0.5, 0.5]} />
+        <meshStandardMaterial color="#222" metalness={0.7} roughness={0.5} />
+      </mesh>
+      <mesh ref={fissureRef} position={[0, 0, 0]}>
         <planeGeometry args={[0.0001, 0.0005]} />
         <meshStandardMaterial
           color="#FF4500"

@@ -1,39 +1,27 @@
-import { Html } from "@react-three/drei";
-
-const spinStyles = `
-  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-`;
+import { useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 
 export const Shot19_DataRate: React.FC<{ progress: number }> = ({ progress }) => {
-  const rate = Math.floor(160 + progress * 1240); // 160 to 1400 bps
+  const rateRef = useRef<THREE.Mesh>(null);
+
+  useFrame(() => {
+    if (!rateRef.current) return;
+
+    rateRef.current.rotation.z = progress * Math.PI * 4;
+  });
 
   return (
-    <Html fullscreen>
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          background: "#000",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          fontFamily: "'Share Tech Mono', monospace",
-        }}
-      >
-        <div style={{ fontSize: "48px", color: "#888" }}>VOYAGER TELEMETRY</div>
-        <div style={{ fontSize: "120px", color: "#00FFFF", fontWeight: "bold", textShadow: "0 0 32px #00FFFF" }}>
-          {rate} bps
-        </div>
-        <div style={{ marginTop: "40px", fontSize: "36px", color: "#FFD700" }}>
-          GOLDEN RECORD SPINNING
-        </div>
-        <svg width="200" height="200" style={{ marginTop: "40px", animation: "spin 2s linear infinite" }}>
-          <circle cx="100" cy="100" r="90" fill="none" stroke="#FFD700" strokeWidth="4" strokeDasharray="20 10" />
-          <circle cx="100" cy="100" r="60" fill="none" stroke="#00FFFF" strokeWidth="2" strokeDasharray="10 20" />
-        </svg>
-        <style dangerouslySetInnerHTML={{ __html: spinStyles }} />
-      </div>
-    </Html>
+    <group>
+      <mesh ref={rateRef} position={[0, 0, 0]}>
+        <cylinderGeometry args={[0.3, 0.3, 0.05, 32]} />
+        <meshStandardMaterial color="#00FFFF" emissive="#00FFFF" emissiveIntensity={0.5} />
+      </mesh>
+      {Array.from({ length: 10 }).map((_, i) => (
+        <mesh key={i} position={[0, i * 0.1, 0]}>
+          <boxGeometry args={[0.2, 0.05, 0.02]} />
+          <meshStandardMaterial color="#FFD700" transparent opacity={progress > i * 0.1 ? 1 : 0} />
+        </mesh>
+      ))}
+    </group>
   );
 };
