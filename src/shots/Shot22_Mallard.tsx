@@ -52,9 +52,9 @@ export const Shot22_Mallard: React.FC<{ progress: number }> = ({ progress }) => 
               }}
             />
           ))}
+          <style dangerouslySetInnerHTML={{ __html: barStyles }} />
         </div>
       </Html>
-      <style dangerouslySetInnerHTML={{ __html: barStyles }} />
     </group>
   );
 };
