@@ -1,5 +1,5 @@
 import { useFrame } from "@react-three/fiber";
-import { useGLTF, group } from "@react-three/drei";
+import { useGLTF, Html } from "@react-three/drei";
 import * as THREE from "three";
 
 const barStyles = `
