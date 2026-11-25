@@ -26,7 +26,7 @@ const models = [
   "coder_rig_collapse", "nokia_dead", "usb_c_brick", "charger_cable",
   "dish_stowed", "zip_lock_bag", "label_gun", "telemetry_wall_animation",
   "golden_record_spin", "data_rate_counter", "cleanroom_bench", "asset_tag",
-  "twta_spare", "logbook", "pen", "frame", "pond", "mallard_rig",
+  "twta_spare", "logbook", "pen", "frame", "pond", "mallard_rig", "mallard",
   "nokia_display", "signal_bars_animation", "solder_joint_micro",
   "fissure_shader", "nokia_3310_2017", "pocket_fabric", "anvil",
   "nokia_3310_original", "waterfall_display_dead", "goldstone_alert",
@@ -78,18 +78,13 @@ const sfx = [
   "wing_beats", "ripple_plop", "binary_tone", "click_click_keypad"
 ];
 
-// Music files - generate valid MP3 files
 const music = [
   "act1_ticking", "act2_rising", "act3_montage", "act4_brass", "loop_decay"
 ];
 
-sfx.forEach(name => {
+music.forEach(name => {
   execSync(
-    `ffmpeg -y -f lavfi -i anullsrc=r=44100:cl=mono -t 2 -q:a 0 "public/assets/sfx/${name}.wav"`,
+    `ffmpeg -y -f lavfi -i anullsrc=r=44100:cl=mono -t 5 -q:a 2 "public/assets/music/${name}.mp3"`,
     { stdio: "inherit" }
   );
 });
-
-console.log(
-  `Generated ${models.length} GLB models, ${sfx.length} SFX WAVs, 5 music MP3s.`
-);
