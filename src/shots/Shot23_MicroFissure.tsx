@@ -22,7 +22,7 @@ export const Shot23_MicroFissure: React.FC<{ progress: number }> = ({ progress }
       <primitive object={coupler} scale={0.5} position={[0, 0, 0]} />
       <mesh ref={fissureRef} name="micro_fissure" position={[0, 0, 0]}>
         <planeGeometry args={[0.0001, 0.0005]} />
-        <meshBasicMaterial
+        <meshStandardMaterial
           color="#FF4500"
           emissive="#FF4500"
           emissiveIntensity={0}
